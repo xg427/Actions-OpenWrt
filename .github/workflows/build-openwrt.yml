@@ -15,8 +15,13 @@ on:
       version:
         description: 'OpenWrt version'
         required: true
-        default: 'snapshot'
+        default: 'openwrt-23.05'
         type: string
+        options:
+          - 'openwrt-23.05'
+          - 'v23.05.3'
+          - 'master'
+          - 'snapshot'
 
 env:
   REPO_URL: https://git.openwrt.org/openwrt/openwrt.git
