@@ -19,6 +19,7 @@ on:
         type: string
         options:
           - 'openwrt-23.05'
+          - 'v23.05.4'
           - 'v23.05.3'
           - 'master'
           - 'snapshot'
