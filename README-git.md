@@ -115,6 +115,60 @@ git push origin main
 
 其中，origin 是你的远程仓库，main 是你要推送的分支名称。
 
+
+## 3. 合并upstream仓库的某次提交
+
+假设你希望将某个提交合并到本地分支，可以使用以下命令：
+
+### 步骤 1: 获取 upstream 仓库的最新更新
+
+首先，你需要从 upstream 仓库获取最新的更新。这不会改变你的本地分支，只是更新了 upstream 远程分支的状态。
+
+```bash
+git fetch upstream
+```
+
+### 步骤 2: 检查 upstream 中的提交
+
+可以通过以下命令查看 upstream 仓库中的提交，找到你需要的那个提交的哈希值。
+
+```bash
+git log upstream/master
+```
+
+### 步骤 3: 合并 upstream 的某一个提交到本地 master
+
+假设你想合并的提交的哈希值是 4bb313c1189e52f3b8ab569d8a9709718e8fb4bc ，你可以使用 cherry-pick 命令将该提交合并到你的本地 master 分支。
+
+```bash
+git checkout master  # 确保你在本地的 master 分支上
+git cherry-pick 4bb313c1189e52f3b8ab569d8a9709718e8fb4bc  # 将特定的提交合并到当前分支
+```
+
+### 步骤 4: 解决冲突（如有）
+
+如果在 cherry-pick 过程中出现冲突，Git 会停止并允许你解决这些冲突。解决冲突后，使用以下命令完成 cherry-pick 操作：
+
+```bash
+git add <resolved files>
+git cherry-pick --continue
+```
+
+如果你决定放弃此次 cherry-pick，可以使用以下命令撤销：
+
+```bash
+git cherry-pick --abort
+```
+
+### 步骤 5: 推送到 origin
+
+合并成功后，如果你希望将修改推送到 origin 仓库，可以使用以下命令：
+
+```bash
+git push origin master
+```
+
+
 ### 总结
 
 通过以上步骤，你已经成功地将原始GitHub项目作为远程仓库添加到了你的本地项目中，并可以方便地进行代码同步和推送操作。
