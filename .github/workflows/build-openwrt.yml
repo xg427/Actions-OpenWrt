@@ -16,7 +16,7 @@ on:
         description: 'OpenWrt version'
         required: true
         default: 'openwrt-23.05'
-        type: string
+        type: choice
         options:
           - 'openwrt-23.05'
           - 'v23.05.4'
